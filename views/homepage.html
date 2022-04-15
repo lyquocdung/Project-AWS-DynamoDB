@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html style="overflow: hidden;">
+<head>
+<link rel="stylesheet"
+	href="homepagecss.css">
+<meta charset="ISO-8859-1">
+<title>Home Page</title>
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
+    <link href="homepagecss.css" rel="stylesheet" type="text/css">
+
+</head>
+<body class="preloading">
+    <header>
+        <div class="container-Header">
+            <div class="row">
+                <div class="logocms">
+                    <h1 class ="cms">CMS</h1>
+                </div>
+                <div class="dropdown">
+                    <button class="dropbtn">
+                        <h1 class="people">
+                            <i class="fas fa-user"></i> <i class="fas fa-sort-down"></i>
+                        </h1>
+                    </button>
+                    <div class="dropdown-menu">
+                        <a href="#"><i class="fas fa-user"></i>User Profile</a>
+                        <hr />
+                        <a href="login.html"><i class="fas fa-sign-out-alt"></i>Logout</a>
+                    </div>
+                </div>
+            </div>
+            <hr style="margin: 0" />
+        </div>
+	</header>
+	
+	<div class="row">
+		<aside>
+            <div class="container-Menu">
+                <form action="SearchContent" class="content" method="post">
+                    <div class="topnav">
+                        <!--search-->
+                        <input type="text" placeholder="Search..." name="search" value="">
+                        <button class="search-button" type="submit">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+                    <hr>
+                    <div class="menu">
+                        <i class="fa fa-table"></i>
+                        <p>
+                            <b><a href="#">View Contents</a></b>
+                        </p>
+                    </div>
+                    <hr>
+                    <div class="menu">
+                        <i class="fas fa-edit"></i>
+                        <p>
+                            <b><a href="#">Form Contents</a></b>
+                        </p>
+                    </div>
+                    <hr>
+                    <div class="emplty"></div>
+                </form>
+            </div>
+		</aside>
+		<section>
+			<div class="container-viewcontent">
+                <div class="row-main">
+                    <h1 style="margin-top: 2%;">View Content</h1>
+                    <hr />
+                    <!--message-->
+                    <p style="margin: 0; padding: 0; color: red; font-size: x-large"></p>
+                    <br />
+                    <table class="table-main">
+                        <tr class="tr-main">
+                            <th class="th-main">View Content List</th>
+                        </tr>
+                        <tr class="tr-main">
+                            <td class="td-main"><table class="table-son">
+                                    <tr class="tr-son">
+                                        <th class="th-son">#</th>
+                                        <th class="th-son">Title</th>
+                                        <th class="th-son">Brief</th>
+                                        <th class="th-son">Created Date</th>
+                                        <th class="th-son">Action</th>
+                                    </tr>
+                                  
+                                        <tr class="tr-son">
+                                            <td class="td-son"></td>
+                                            <td class="td-son"></td>
+                                            <td class="td-son"></td>
+                                            <td class="td-son"></td>
+                                            <td class="td-son"><a
+                                                href="#"
+                                                style="margin-right: 20px">Edit</a><a
+                                                href="#">Delete</a></td>
+                                        </tr>
+                                    
+                                </table></td>
+                        </tr>
+                    </table>
+        
+        
+        
+                    <c:if test="${start>0}">
+                        <a class="nextprevious" href="viewcontent.tiles?start=${start-10}"
+                            class="previous">&laquo; Previous</a>
+        
+                    </c:if>
+                    <c:if test="${start<=0}">
+                        <p class="nextpreviouscancel">&laquo; Previous</p>
+                    </c:if>
+                    <a class="nextprevious" href="?start=0">1</a>
+                    <c:if test="${end%10!=0}">
+                        <c:forEach var="size" begin="2" end="${(end/10)+1}">
+                            <a class="nextprevious"
+                                href="?start=${((size-1)*10)}">${size}</a>
+                        </c:forEach>
+                    </c:if>
+                    
+                    
+                    <c:if test="${end%10==0}">
+                        <c:forEach var="size" begin="2" end="${(end/10)}">
+                            <a class="nextprevious"
+                                href="?start=${((size-1)*10)}">${size}</a>
+                        </c:forEach>
+                    </c:if>
+        
+        
+        
+        
+                    <c:if test="${start <=end-11}">
+                        <a class="nextprevious" href="?start=${start+10}"
+                            class="next">Next &raquo;</a>
+                    </c:if>
+                    <c:if test="${start>end-11}">
+                        <p class="nextpreviouscancel">Next &raquo;</p>
+                    </c:if>
+        
+                </div>
+            </div>
+		</section>
+	</div>
+
+
+
+
+
+	
+   
+   
+</body>
+</html>
